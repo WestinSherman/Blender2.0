@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const allseshs = Object.values(
+    import.meta.glob("../seshs/*.md", { eager: true }),
+);
+const tags = [
+    ...new Set(allseshs.map((sesh: any) => sesh.frontmatter.tags).flat()),
+];
+const pageTitle = "Tag Index";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <div class="tags">
+        {
+            tags.map((tag) => (
+                <p class="tag">
+                    <a href={`/tags/${tag}`}>{tag}</a>
+                </p>
+            ))
+        }
+    </div>
+</BaseLayout>

@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StarMetalsesh from "../components/StarMetalcharacters.astro";
+const allideas = Object.values(
+    import.meta.glob("./ideas/*.mdx", { eager: true }),
+);
+const pageTitle = "Ideas";
+---
+
+<Layout pageTitle={pageTitle}>
+    <ul>
+        {
+            allideas.map((idea: any) => (
+                <StarMetalsesh url={idea.url} title={idea.frontmatter.title} />
+            ))
+        }
+    </ul>
+</Layout>

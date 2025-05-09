@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/Layout.astro";
+import StarMetalsesh from "../components/StarMetalcharacters.astro";
+const allprojects = Object.values(
+    import.meta.glob("./projects/*.mdx", { eager: true }),
+);
+const pageTitle = "Projects";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <ul>
+        {
+            allprojects.map((project: any) => (
+                <StarMetalsesh
+                    url={project.url}
+                    title={project.frontmatter.title}
+                />
+            ))
+        }
+    </ul>
+</BaseLayout>

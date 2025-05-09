@@ -1,0 +1,89 @@
+---
+layout: ../../layouts/MarkdownseshLayout.astro
+title: Perfect_Me
+author: Astro Learner
+description: "After learning some Astro, I couldn't stop!"
+image:
+    url: "https://docs.astro.build/assets/arc.webp"
+    alt: "The Astro logo on a dark background with a purple gradient arc."
+pubDate: 2025-03-10
+tags: ["astro", "blogging", "learning in public", "Blender", "3D", "Half-Life"]
+---
+import { Image } from 'astro:assets';
+import Boots from './assets/_BootsFinishedForNow.png';
+import ArmArmorR from './assets/_ArmArmorRemoved.png';
+import NeckArmor from './assets/_NeckArmorStart.png';
+import NeckK from './assets/_NeckK.png';
+import TheParryGod from './assets/_TheParryGodRef.jpeg';
+import Adam from './assets/_Adam.png';
+import BodyRig from './assets/_BodyRigging.png';
+import BodyRigF from './assets/_BodyRiggingF.png';
+import FinallyRigged from './assets/_FinallyRigged.png';
+import WallHammerRef from './assets/_WallHammerRef.png';
+import End from './assets/_End.png';
+import FBones from './assets/_FixBones.png';
+
+# The Perfect Me
+My goal with this project is to create a 3D model of a Half-Life combine soldier armored
+version of the Perfect_Me.
+#### TheParryGod reference:
+<Image src={TheParryGod} alt="Boots" width={500} height={300} />
+#### Pintrest:
+I started this project by looking at some references on Pintrest. I found a few images that I liked and
+I will be using them as a reference for my model. I will be using the Half-Life combine soldier as a base
+for my model. More accuratelyl, I will be using the armor from the Youtube video "Patient Zero"
+by **TheParryGod**.
+#### Boots:
+Right now I am working on the boots. I have been looking on Pintrest and DeviantArt for some
+references. I have found a few images that I think might be useful.
+ I have also been actually working on the boots. Getting the correct perportions hasb't been easy.
+ I have finished working on the boots for now, I do intend on working on it some more later.
+<Image src={Boots} alt="Boots" width={500} height={300} />
+#### Arm Armor:
+ I moved on to removing the arm armor which took quite a long time.
+<Image src={ArmArmorR} alt="Boots" width={500} height={300} />
+#### Neck Armor:
+Well I did start on it and had tried making it from a plane and then solidifying it but I couln't figure out
+how to get the right shape. I ended up trying a cylinder and a phere and failed both.
+I am now going to take a break from trying to build The Pergect Me and try some other tutorials to see if I can
+learn some more tricks to help me solve my problems.
+<Image src={NeckArmor} alt="Boots" width={500} height={300} />
+I ended up not taking a break and instead I started working on the neck armor. I think I will keep trying to 
+use a cylinder. I have probably restarted the neck armor over a dozen times now.
+I think I will just try to build something I like that is similar to TheParryGod's design.
+<Image src={NeckK} alt="Boots" width={500} height={300} />
+#### Atom:
+I have desided to create my own body and Its called Atom. I have fixed the legs, butt, fingers, back and wrists.
+<Image src={Adam} alt="Adam" width={500} height={300} />
+#### Body Rigging:
+I am using Blenders prebuilt rigging bone structure. I deleted the face rigging. I had to delete the all the rigging bellow to knee
+because the bones were to big for the body.
+<Image src={BodyRig} alt="Adam" width={500} height={300} />
+Here is the finished rigging:
+<Image src={BodyRigF} alt="Adam" width={500} height={300} />
+I FINALLY!!!!! got the Valve Meshes to rig. I just had to parent them seperately and to the bones not the body.
+I also had to delete the bone groups.
+<Image src={FinallyRigged} alt="Adam" width={500} height={300} />
+I have been working on getting the arm armor to look correctly and I Got sidetracked with the Adam(body) mesh 
+because it just doesn't look right. I ended up doing that a few times because I had fucked up on something and didn't save After
+fixing a few issues like the dupped body plate mesh and the arm armor.
+<Image src={WallHammerRef} alt="Adam" width={500} height={300} />
+#### Plates:
+I seperated the plates on the body. Fixed the shape of them.
+#### Shirt:
+Not sure if I will keep this shirt. I haven't finished settinf it up. I am thinking 
+that I should be making some sort of one piece suit to go underneath the armor.
+#### Stuck:
+I have finished the Mesh but the rigging isn't working. I could sort of get some of the things working but then something else
+would break. Right now I am just going to work on getting the mesh cleaner and make it a propper low poly model.
+I would like to eventually make a high poly version of the model. I don't think I will be trying again at getting the rigging working for a while.
+<Image src={End} alt="End" width={500} height={300} />
+#### Fixing Bones:
+I have watched a few videos and found out that parenting each brocken mesh piece to a specific bone closest to the mesh peice might fix them.
+I also might have to change the weight painting on the Mesh pieces to get them to work correctly.
+<Image src={FBones} alt="FixingBones" width={500} height={300} />
+
+ {/*
+ TODO:
+ Add download link for blender.
+ */}

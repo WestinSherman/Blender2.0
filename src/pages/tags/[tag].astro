@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import StarMetalsesh from "../../components/StarMetalsesh.astro";
+
+export async function getStaticPaths() {
+    const allseshs = Object.values(
+        import.meta.glob("../seshs/*.md", { eager: true }),
+    );
+
+    const uniqueTags = [
+        ...new Set(allseshs.map((sesh: any) => sesh.frontmatter.tags).flat()),
+    ];
+
+    return uniqueTags.map((tag) => {
+        const filteredseshs = allseshs.filter((sesh: any) =>
+            sesh.frontmatter.tags.includes(tag),
+        );
+        return {
+            params: { tag },
+            props: { seshs: filteredseshs },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { seshs } = Astro.props;
+---
+
+<BaseLayout pageTitle={tag}>
+    <p>seshs tagged with {tag}</p>
+    <ul>
+        {
+            seshs.map((sesh: any) => (
+                <StarMetalsesh url={sesh.url} title={sesh.frontmatter.title} />
+            ))
+        }
+    </ul>
+</BaseLayout>

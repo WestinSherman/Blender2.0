@@ -1,0 +1,121 @@
+---
+import Layout from "../layouts/Layout.astro";
+//import { CONFIG } from "../config";
+import { getCollection } from "astro:content";
+import LinkCard from "../components/LinkCard.astro";
+import "../styles/global.css";
+
+const finds = (
+	await getCollection("finds", ({ data }) => {
+		return data.public !== false;
+	})
+)
+	.sort(
+		(a, b) =>
+			b.data.publicationDate.valueOf() - a.data.publicationDate.valueOf(),
+	)
+	.slice(0, 10);
+---
+
+<Layout>
+	<section id="Top">
+		<section id="intro">
+			<img src="/_Logo.png" alt="Logo" width="128" height="128" />
+			<div id="intro-text">
+				<h1>WhoAteMyFace</h1>
+				<div id="subtitle">
+					Blender Noob | Wannabe Game Dev | Wannabe Programmer |
+					Wannabe 3D Artist | Wannabe Frontend Dev
+				</div>
+			</div>
+		</section>
+		<p>
+			This is where I will post my projects, tutorials, and other things I
+			find interesting. I am a beginner in all of these fields, so I will
+			be learning as I go. I hope to share my knowledge and experiences
+			with others who are also starting out. I will be posting tutorials,
+			tips, and tricks that I learn along the way. I will also be sharing
+			my projects and ideas, as well as any resources I find helpful. I
+			hope to create a community of like-minded individuals who are also
+			interested in game development, programming, and 3D art. I want to
+			create a space where we can all learn from each other and share our
+			experiences.
+		</p>
+		<p>
+			I'm also available for new projects and collaborations. Whatever
+			you're looking for, I'd love to discuss it with you. Email me to
+			start a conversation!
+		</p>
+		<ul id="action-links">
+			<li><a href="mailto:westin@arnst.ca">Email</a></li>
+			<li><a href="https://github.com/WestinSherman">Github</a></li>
+			<li>
+				<a href="linkedin.com/in/westin-sherman-825a57a0">LinkedIn</a>
+			</li>
+		</ul>
+	</section>
+	<hr />
+	<section id="finds">
+		<h2>Relevent Finds...</h2>
+		<div class="finds-box">
+			{
+				finds.map((entry) => (
+					<LinkCard
+						type={entry.data.type}
+						title={entry.data.title}
+						publicationDate={entry.data.publicationDate}
+						description={entry.data.description}
+						link={entry.data.link}
+					/>
+				))
+			}
+		</div>
+	</section>
+</Layout>
+
+<style>
+	#Top {
+		display: flex-column;
+		flex-direction: column;
+		align-items: center;
+		padding: 32px 0px 24px;
+		gap: 1rem;
+	}
+	#intro {
+		display: flex-row;
+		display: flex;
+		justify-content: center;
+
+		gap: 1rem;
+	}
+	#intro img {
+		border-radius: 9999px;
+		border: 4px solid var(--color-button-border);
+		width: 8rem;
+		height: 8rem;
+	}
+	#intro-text {
+		display: flex-row;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	h1 {
+		font-size: 44px;
+		font-weight: 700;
+		margin: 0;
+	}
+	#action-links {
+		display: flex;
+		margin: 0.25rem;
+		flex-wrap: wrap;
+		list-style-type: none;
+	}
+	#action-links li a {
+		display: block;
+		padding: 0.25rem;
+		margin-right: 0.5rem;
+		font-weight: 700;
+		border-color: var(--color-border);
+	}
+</style>
