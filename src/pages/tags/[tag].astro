@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import StarMetalsesh from "../../components/StarMetalsesh.astro";
+import Layout from "../../layouts/Layout.astro";
+import StarMetalcharacters from "../../components/StarMetalcharacters.astro";
 
 export async function getStaticPaths() {
     const allseshs = Object.values(
@@ -26,13 +26,16 @@ const { tag } = Astro.params;
 const { seshs } = Astro.props;
 ---
 
-<BaseLayout pageTitle={tag}>
+<Layout pageTitle={tag}>
     <p>seshs tagged with {tag}</p>
     <ul>
         {
             seshs.map((sesh: any) => (
-                <StarMetalsesh url={sesh.url} title={sesh.frontmatter.title} />
+                <StarMetalcharacters
+                    url={sesh.url}
+                    title={sesh.frontmatter.title}
+                />
             ))
         }
     </ul>
-</BaseLayout>
+</Layout>

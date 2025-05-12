@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/Layout.astro";
 const allseshs = Object.values(
     import.meta.glob("../seshs/*.md", { eager: true }),
 );
@@ -9,7 +9,7 @@ const tags = [
 const pageTitle = "Tag Index";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle}>
     <div class="tags">
         {
             tags.map((tag) => (
@@ -19,4 +19,4 @@ const pageTitle = "Tag Index";
             ))
         }
     </div>
-</BaseLayout>
+</Layout>
