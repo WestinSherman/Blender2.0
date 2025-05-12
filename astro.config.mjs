@@ -1,10 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import { CONFIG } from './src/config';
-
+import mdx from '@astrojs/mdx';
 
 export default defineConfig({
     base: "/",
+    integrations: [mdx()],
     content: {
         collections: {
             posts: {
@@ -13,8 +14,8 @@ export default defineConfig({
             finds: {
                 schema: "src/content/config.ts#finds",
             },
-            cvs: {
-                schema: "src/content/config.ts#cvs",
+            projects: {
+                schema: "src/content/config.ts#projects",
             },
         },
     },

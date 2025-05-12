@@ -1,7 +1,9 @@
+import type { projects } from "./content/config";
+
 export const PATHS = {
   home: "/",
   about: "/about",
-  cvs: "/cvs",
+  projects: "/projects",
   // posts: "/posts",
   finds: "/finds",
   error404: "/404",

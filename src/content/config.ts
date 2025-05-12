@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { CONFIG } from "config";
+import { CONFIG } from "../config";
 
 export const posts = defineCollection({
   type: "content",
@@ -27,7 +27,7 @@ export const finds = defineCollection({
   }),
 });
 
-export const cvs = defineCollection({
+export const projects = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
@@ -39,3 +39,10 @@ export const cvs = defineCollection({
     public: z.boolean().default(true),
   }),
 });
+
+// Export all collections for Astro
+//export const collections = {
+//  posts,
+//  finds,
+//  projects,
+//};

@@ -1,0 +1,106 @@
+---
+import { getCollection, render } from "astro:content";
+// import type { GetStaticPathsOptions } from 'astro';
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const projects = await getCollection("projects", ({ data }) => {
+    return data.public !== false;
+});
+// export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+// // export async function getStaticPaths() {
+//   const projects = (await getCollection('projects'))
+//   return (projects);
+// }
+//
+// const { page } = Astro.props;
+// const pageTitle = page.currentPage === 1 ? 'Blog Posts' : `Blog Posts - Page ${page.currentPage}`;
+const pageTitle = "My Projects";
+---
+
+<Layout title={pageTitle}>
+    <Breadcrumbs path={["projects"]} />
+    <article class="page-content">
+        <header class="post-header">
+            <h1>{pageTitle}</h1>
+            <hr />
+        </header>
+    </article>
+    <section id="finds">
+        <h2 class="font-heading">
+            Various Projects. From long term goals to short.
+        </h2>
+        <div class="finds-box">
+            {
+                projects.map((project) => (
+                    <ProjectCard
+                        title={project.data.title}
+                        publicationDate={project.data.publicationDate}
+                        description={project.data.description}
+                        slug={project.data.slug}
+                    />
+                ))
+            }
+        </div>
+    </section>
+
+    <style>
+        .post {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .post-header {
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: var(--step-4);
+            margin: 0 0 1rem;
+            color: var(--color-text-base);
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--color-text-base);
+            font-size: var(--step--1);
+            align-items: center;
+        }
+
+        .category {
+            padding: 0.5em;
+            text-transform: capitalize;
+            background: var(--color-card);
+        }
+
+        .page-content :global(p:first-of-type) {
+            font-size: var(--step-1);
+            color: var(--color-text-muted);
+        }
+    </style>
+    <style>
+        .posts-container {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: var(--step-4);
+            margin-bottom: 2rem;
+        }
+
+        hr {
+            padding-bottom: var(--gap);
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(1fr);
+            gap: 2rem;
+        }
+    </style>
+</Layout>
